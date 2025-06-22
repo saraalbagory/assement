@@ -1,10 +1,9 @@
-import React from 'react'
-import { Movie } from '../models/Movies'
-import Link from 'next/link'
-import Image from 'next/image'
-import HeartButton from './FavoriteButton'
+import Link from "next/link"
+import { favMovie } from "../store/userFavoritesStore"
+import Image from "next/image"
+import HeartButton from "./FavoriteButton"
 
-const MovieCard = (movie: Movie) => {
+const FavMovieCard = (movie: favMovie) => {
     return (
         <div className='flex flex-col  items-center justify-center m-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ease-in-out group'>
             <div className="relative w-[250px] h-[400px]">
@@ -21,16 +20,17 @@ const MovieCard = (movie: Movie) => {
 
                 {/* Favorite Button  */}
                 <div className="absolute top-2 right-2">
-                    <HeartButton movieId={movie.id.toString()} title={movie.title} poster_path={movie.poster_path||""} />
+                    <HeartButton movieId={movie.id} title={movie.title} poster_path={movie.poster_path} />
                 </div>
             </div>
-            <h2>{movie.original_title || movie.title}</h2>
-            <p className='text-sm text-gray-500'>{movie.release_date}</p>
-            <span>⭐ {movie.vote_average}/10</span>
+
+            <h2>{movie.title}</h2>
+
+
 
 
         </div>
     )
 }
 
-export default MovieCard
+export default FavMovieCard

@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image'
 import CastList from '@/src/components/CastList';
 import MovieDetailsModel from '@/src/models/MovieDetailsModel';
+import HeartButton from '@/src/components/FavoriteButton';
 
 type genre = {
     id: number,
@@ -82,25 +83,10 @@ export default async function MovieDetails({ params }: { params: { id: string } 
                         <h2 className="text-xl mt-4 mb-2 font-semibold">Synopsis</h2>
                         <p className="text-gray-100">{movie.overview}</p>
                     </div>
+                    <div className='flex gap-4 '><span className="text-gray-100 text-md font-semibold " >Add To favorites</span ><HeartButton movieId={movie.id} title={movie.title} poster_path={movie.poster_path}/></div>
                     <div >
                     <CastList key={movie.id} params={{ id: movieId }}/>
                     </div>
-
-                    {/* <div>
-                        <h2 className="text-xl mt-4 mb-2 font-semibold">Director</h2>
-                        <p>{director?.name ?? 'N/A'}</p>
-                    </div> */}
-
-                    {/* <div>
-                        <h2 className="text-xl mt-4 mb-2 font-semibold">Top Cast</h2>
-                        <ul className="flex flex-wrap gap-2">
-                            {topCast.map((actor) => (
-                                <li key={actor.id} className="bg-white/10 px-3 py-1 rounded">
-                                    {actor.name}
-                                </li>
-                            ))}
-                        </ul>
-                    </div> */}
                 </div>
             </div>
         </div>
