@@ -1,11 +1,30 @@
+import MoviesList from "../components/MoviesList";
 
+const API_KEY = process.env.API_KEY;
 
-export default function Home() {
+const query = 'JUNGLE';
+const searchURl = `/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1`;
+
+export default async function Home() {
+  const res = await fetch(`https://api.themoviedb.org/3${searchURl}`, {
+    method: 'GET',
+    headers: {
+      accept: 'application/json',
+      Authorization: `Bearer ${API_KEY}`,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch movies');
+  }
+
+  const movies = await res.json();
+  // if (movies?.results) {
+  //   return <div>No movies found</div>;
+  // }
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <h1>My first line</h1>
-      </main>
-    </div>
+    
+    <MoviesList results={movies.results} />
+    
   );
 }
