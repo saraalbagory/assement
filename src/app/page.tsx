@@ -1,12 +1,10 @@
 import MoviesList from "../components/MoviesList";
+import SearchBox from "../components/search-box";
 
 const API_KEY = process.env.API_KEY;
 
-const query = 'JUNGLE';
-const searchURl = `/search/movie?query=${encodeURIComponent(query)}&include_adult=false&language=en-US&page=1`;
-
 export default async function Home() {
-  const res = await fetch(`https://api.themoviedb.org/3${searchURl}`, {
+  const res = await fetch(`https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1`, {
     method: 'GET',
     headers: {
       accept: 'application/json',
@@ -19,12 +17,11 @@ export default async function Home() {
   }
 
   const movies = await res.json();
-  // if (movies?.results) {
-  //   return <div>No movies found</div>;
-  // }
+
   return (
-    
+    <>
+    <SearchBox/>
     <MoviesList results={movies.results} />
-    
+    </>
   );
 }

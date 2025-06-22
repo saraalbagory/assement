@@ -5,8 +5,8 @@ import Image from 'next/image'
 
 const MovieCard = (movie: Movie) => {
     return (
-        <div className='flex flex-col items-center justify-center m-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ease-in-out group'>
-            <Link href={`/movie/${movie.id}`}>
+        <div className='flex flex-col  items-center justify-center m-2 p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ease-in-out group'>
+            <Link href={`/movieDetail/${movie.id}`}>
                 <Image
                     src={`https://image.tmdb.org/t/p/original/${movie.poster_path ?? movie.backdrop_path}`}
                     alt={movie.original_title}
