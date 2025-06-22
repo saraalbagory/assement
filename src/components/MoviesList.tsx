@@ -1,4 +1,5 @@
 import { Movie } from "../models/Movies";
+import MovieCard from "./MovieCard";
 
 
 type MoviesListProps = {
@@ -6,11 +7,13 @@ type MoviesListProps = {
 };
 
 
-export default function MoviesList({ results }: MoviesListProps) {
+export default function MoviesList({ results} : MoviesListProps) {
   return (
-    <div>
+    <div className='sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-4 mx-auto py-4 '>
       {results.map((movie) => (
-        <div key={movie.id}>{movie.original_title}</div>
+        <MovieCard
+          key={movie.id}
+          {...movie}/>
       ))}
     </div>
   );
