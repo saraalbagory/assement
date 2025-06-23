@@ -1,8 +1,8 @@
 import React from 'react'
-import { Movie } from '../models/Movies'
+import { Movie } from '../../models/Movies'
 import Link from 'next/link'
 import Image from 'next/image'
-import HeartButton from './FavoriteMovieButton/FavoriteButton'
+import HeartButton from '../FavoriteMovieButton/FavoriteButton'
 
 
 const MovieCard = (movie: Movie) => {
@@ -22,7 +22,7 @@ const MovieCard = (movie: Movie) => {
 
                 {/* Favorite Button  */}
                 <div className="absolute top-2 right-2">
-                    <HeartButton movieId={movie.id.toString()} title={movie.title} poster_path={movie.poster_path||""} />
+                    <HeartButton movieId={movie.id.toString()} title={movie.title} poster_path={movie.poster_path ?? ""} />
                 </div>
             </div>
             <h2>{movie.original_title || movie.title}</h2>

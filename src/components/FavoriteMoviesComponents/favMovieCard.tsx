@@ -1,7 +1,8 @@
 import Link from "next/link"
-import { favMovie } from "../store/userFavoritesStore"
+
 import Image from "next/image"
-import HeartButton from "./FavoriteButton"
+import HeartButton from "../FavoriteMovieButton/FavoriteButton"
+import { favMovie } from "@/src/store/userFavoritesStore"
 
 const FavMovieCard = (movie: favMovie) => {
     return (

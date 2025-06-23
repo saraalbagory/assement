@@ -1,15 +1,16 @@
 "use client"; // Ensure it's a Client Component
+import { favMovie, useUserFavoritesStore } from "@/src/store/userFavoritesStore";
 import { FaHeart } from "react-icons/fa";
-import { favMovie, useUserFavoritesStore } from "../store/userFavoritesStore";
-import { favMovieProps } from "../models/FavMovieProps";
 
-// type HeartButtonProps = {
-//     movieId: string;
-//     title: string;
-//     poster_path?: string;
-// };
 
-export default function HeartButton({ movieId, title, poster_path }: Readonly<favMovieProps>) {
+
+type HeartButtonProps = {
+    movieId: string;
+    title: string;
+    poster_path?: string;
+};
+
+export default function HeartButton({ movieId, title, poster_path }: Readonly<HeartButtonProps>) {
     const { movies, addFavMovie, removeTask } = useUserFavoritesStore ();
 
     //Check if the movie is in favorites

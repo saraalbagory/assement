@@ -10,7 +10,7 @@ const FavMovieCard = dynamic(() => import('@/src/components/FavoriteMoviesCompon
   ssr: false,
   loading: () => <div className="flex justify-center items-center w-full h-40">
       <Image
-        src="/public/spinner.svg" 
+        src="/public/spinner.svg"
         alt="Loading..."
         width={50}
         height={50}

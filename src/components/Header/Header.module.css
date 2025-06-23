@@ -1,0 +1,32 @@
+/* Header styles */
+.header {
+    background-color: black;
+    color: white;
+    padding: 16px 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Container styles */
+.container {
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Navigation styles */
+.nav {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+/* Navigation links */
+.navlink {
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.navlink:hover {
+    color: #fbbf24;
+}
+

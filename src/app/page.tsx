@@ -1,5 +1,5 @@
-import MoviesList from "../components/MoviesList";
-import SearchBox from "../components/search-box";
+import MoviesList from "../components/MoviesList/MoviesList";
+import SearchBox from "../components/SearchBox/search-box";
 
 const API_KEY = process.env.API_KEY;
 
@@ -20,8 +20,8 @@ export default async function Home() {
 
   return (
     <>
-    <SearchBox/>
-    <MoviesList results={movies.results} />
+      <SearchBox />
+      <MoviesList results={movies.results} />
     </>
   );
 }

@@ -3,7 +3,7 @@ import Image from "next/image";
 
 
 
-export default function CastMemberCard({ castMember }: { castMember:  CastMember }) {
+export default function CastMemberCard({ castMember }: Readonly<{ castMember: CastMember }>) {
     return (
         <div className="flex flex-col items-center justify-center m-2 p-2 bg-black rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200 ease-in-out group">
             {castMember.profile_path ? (

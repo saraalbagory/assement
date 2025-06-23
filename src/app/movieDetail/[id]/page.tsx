@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image'
 import MovieDetailsModel from '@/src/models/MovieDetailsModel';
 import dynamic from 'next/dynamic';
-import CastList from '@/src/components/CastComponents/CastList';
+import CastList from '@/src/components/CastList/CastList';
 
 
 type genre = {
@@ -12,7 +12,7 @@ type genre = {
 
 //try moving the lazyloading of the heartbutton to check if it will work correctly
 
-const HeartButton = dynamic(() => import('@/src/components/FavoriteMoviesComponents/FavoriteButton'), {});
+const HeartButton = dynamic(() => import('@/src/components/FavoriteMovieButton/FavoriteButton'), {});
 export default async function MovieDetails({ params }: Readonly<{ params: { id: string } }>) {
     const movieId = params.id;
 

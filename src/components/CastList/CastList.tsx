@@ -3,7 +3,7 @@ import CastMember from '../../models/CastMebmer';
 import CastMemberCard from '../CastMemberCard/CastMemberCard';
 
 
-export default async function CastList({ params }: { params: { id: string } }) {
+export default async function CastList({ params }: Readonly<{ params: { id: string } }>) {
     const movieId = params.id;
     console.log("Movie ID:", movieId);
     const res = await fetch(

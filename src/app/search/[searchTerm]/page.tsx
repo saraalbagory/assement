@@ -1,5 +1,5 @@
-import MoviesList from '@/src/components/MoviesList';
-import SearchBox from '@/src/components/search-box';
+import MoviesList from '@/src/components/MoviesList/MoviesList';
+import SearchBox from '@/src/components/SearchBox/search-box';
 
 import React from 'react'
 const API_KEY = process.env.API_KEY;
@@ -22,8 +22,8 @@ export default async function SearchPage({ params }: { params: { searchTerm: str
 
     return (
         <>
-            <SearchBox/>
-            {movies?.  movies.results && movies.results.length === 0 ? (
+            <SearchBox />
+            {movies&& movies.results && movies.results.length === 0 ? (
                 <h1 className="text-center text-2xl font-bold mt-10">
                     No results found for {query}
                 </h1>
