@@ -13,8 +13,9 @@ type genre = {
 //try moving the lazyloading of the heartbutton to check if it will work correctly
 
 const HeartButton = dynamic(() => import('@/src/components/FavoriteMovieButton/FavoriteButton'), {});
-export default async function MovieDetails({ params }: Readonly<{ params: { id: string } }>) {
-    const movieId = params.id;
+export default async function MovieDetails({params,}: Readonly<{params: { id: string }}>) {
+    const { id } = await params;
+    const movieId = id;
 
     const res = await fetch(
         `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`,

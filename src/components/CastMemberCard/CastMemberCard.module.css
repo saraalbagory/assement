@@ -1,0 +1,54 @@
+.castContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+    padding: 8px;
+    background-color: black;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.2s ease-in-out;
+    width: 90%;
+    max-width: 300px;
+}
+
+/* Ensure it scales well on smaller screens */
+@media (max-width: 600px) {
+    .castContainer {
+        max-width: 75%; 
+    }
+}
+
+.castContainer:hover{
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+.cardImage{
+    border-radius: 15px;
+    transition: transform 0.2s ease-in-out;
+}
+.cardImage:hover{
+    transform: scale(1.05);
+}
+.fallbackImage {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f5f5f5;
+}
+.castName {
+    margin-top: 4px;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.castCharacter {
+    font-size: 0.875rem;
+    color: #a0a0a0;
+}
+

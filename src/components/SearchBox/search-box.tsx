@@ -9,7 +9,7 @@ export default function SearchBox() {
     const handleSumit = (e: React.FormEvent) => {
         e.preventDefault();
         if (!searchTerm.trim()) return;
-        router.push(`/search/${searchTerm}`);
+        router.push(`/search/${searchTerm}?page=1`);
         console.log("Searching for:", searchTerm);
         setSearchTerm("");
     }

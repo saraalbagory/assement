@@ -2,7 +2,7 @@ import React from 'react'
 import { Movie } from '../../models/Movies'
 import Link from 'next/link'
 import Image from 'next/image'
-import HeartButton from '../FavoriteMovieButton/FavoriteButton'
+//import HeartButton from '../FavoriteMovieButton/FavoriteButton'
 
 
 const MovieCard = (movie: Movie) => {
@@ -19,11 +19,6 @@ const MovieCard = (movie: Movie) => {
                         className="rounded-lg hover:scale-105 transition-transform duration-200 ease-in-out"
                     />
                 </Link>
-
-                {/* Favorite Button  */}
-                <div className="absolute top-2 right-2">
-                    <HeartButton movieId={movie.id.toString()} title={movie.title} poster_path={movie.poster_path ?? ""} />
-                </div>
             </div>
             <h2>{movie.original_title || movie.title}</h2>
             <p className='text-sm text-gray-500'>{movie.release_date}</p>

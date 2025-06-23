@@ -1,6 +1,11 @@
 @import "tailwindcss";
 
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f3f4f6;
 
-
-
-
+}

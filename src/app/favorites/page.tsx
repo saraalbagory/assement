@@ -1,4 +1,4 @@
-'use client'
+'use client';
 
 import { favMovie, useUserFavoritesStore } from "@/src/store/userFavoritesStore";
 import dynamic from "next/dynamic";
