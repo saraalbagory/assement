@@ -1,15 +1,19 @@
 import React from 'react';
 import Image from 'next/image'
-import CastList from '@/src/components/CastList';
 import MovieDetailsModel from '@/src/models/MovieDetailsModel';
-import HeartButton from '@/src/components/FavoriteButton';
+import dynamic from 'next/dynamic';
+import CastList from '@/src/components/CastComponents/CastList';
+
 
 type genre = {
     id: number,
     name: string
 }
 
-export default async function MovieDetails({ params }: { params: { id: string } }) {
+//try moving the lazyloading of the heartbutton to check if it will work correctly
+
+const HeartButton = dynamic(() => import('@/src/components/FavoriteMoviesComponents/FavoriteButton'), {});
+export default async function MovieDetails({ params }: Readonly<{ params: { id: string } }>) {
     const movieId = params.id;
 
     const res = await fetch(
@@ -26,8 +30,8 @@ export default async function MovieDetails({ params }: { params: { id: string } 
         throw new Error('Failed to fetch movie details');
     }
 
-    const movie:MovieDetailsModel = await res.json();
-    console.log("movie details", movie)
+    const movie: MovieDetailsModel = await res.json();
+
 
 
     return (
@@ -83,9 +87,9 @@ export default async function MovieDetails({ params }: { params: { id: string } 
                         <h2 className="text-xl mt-4 mb-2 font-semibold">Synopsis</h2>
                         <p className="text-gray-100">{movie.overview}</p>
                     </div>
-                    <div className='flex gap-4 '><span className="text-gray-100 text-md font-semibold " >Add To favorites</span ><HeartButton movieId={movie.id} title={movie.title} poster_path={movie.poster_path}/></div>
+                    <div className='flex gap-4 '><span className="text-gray-100 text-md font-semibold " >Add To favorites</span ><HeartButton movieId={movie.id} title={movie.title} poster_path={movie.poster_path} /></div>
                     <div >
-                    <CastList key={movie.id} params={{ id: movieId }}/>
+                        <CastList key={movie.id} params={{ id: movieId }} />
                     </div>
                 </div>
             </div>

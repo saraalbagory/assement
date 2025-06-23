@@ -1,6 +1,7 @@
 import React from 'react'
-import CastMember from '../models/CastMebmer';
+import CastMember from '../../models/CastMebmer';
 import CastMemberCard from './CastMemberCard';
+
 
 export default async function CastList({ params }: { params: { id: string } }) {
     const movieId = params.id;
@@ -20,7 +21,6 @@ export default async function CastList({ params }: { params: { id: string } }) {
         throw new Error('Failed to fetch cast details');
     }
 
-    console.log("cast details", res)
 
     const data = await res.json();
     const cast: CastMember[] = data.cast;
@@ -28,7 +28,7 @@ export default async function CastList({ params }: { params: { id: string } }) {
     return (
         <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mx-auto py-4">
             {cast && cast.length > 0 ? (
-                cast.slice(0,4).map((member: CastMember) => (
+                cast.slice(0, 4).map((member: CastMember) => (
                     <CastMemberCard key={member.cast_id} castMember={member} />
                 ))
             ) : (

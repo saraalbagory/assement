@@ -1,13 +1,26 @@
 'use client'
 
-import FavMovieCard from "@/src/components/favMovieCard";
 import { favMovie, useUserFavoritesStore } from "@/src/store/userFavoritesStore";
-
+import dynamic from "next/dynamic";
+import Image from "next/image"
 import React, { useMemo } from 'react'
 
 
+const FavMovieCard = dynamic(() => import('@/src/components/FavoriteMoviesComponents/favMovieCard'), {
+  ssr: false,
+  loading: () => <div className="flex justify-center items-center w-full h-40">
+      <Image
+        src="/public/spinner.svg" 
+        alt="Loading..."
+        width={50}
+        height={50}
+      />
+    </div>,
+});
+
 export default function Favorites() {
   const movies: favMovie[] = useUserFavoritesStore((state) => state.movies);
+
   //useMemo to avoid unnecessary re-renders "filtering the movies array"
   //const filteredMovies = useMemo(() => movies.filter(movie => movie.isFavorite), [movies]);
   const uniqueMovies = useMemo(() =>
