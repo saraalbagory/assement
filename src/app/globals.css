@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-.error-container {
+/* Error , failed , not found messages*/
+.centered-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -8,4 +9,108 @@
     height: 100vh;
     background-color: #f3f4f6;
 
+}
+
+.error-container-text {
+    font-size: 2rem;
+    color: #dc2626;
+    font-weight: 700;
+}
+
+.empty-list-text {
+    font-size: 1.5rem;
+    color: #6b7280;
+    line-height: 2rem;
+    font-weight: 700;
+}
+
+.empty-list-text-sm {
+    font-size: 1rem;
+    color: #817d7d;
+    font-weight: 600;
+}
+
+/* list grid css*/
+
+.list-grid {
+    background-color: #fafafb;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.25rem;
+    padding: 1rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+
+@media (min-width: 640px) {
+    .list-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 768px) {
+    .list-grid {
+        grid-template-columns: repeat(3, 1fr);
+
+    }
+}
+
+/* Large screens (lg) */
+@media (min-width: 1024px) {
+    .list-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* Extra large screens (xl) */
+@media (min-width: 1280px) {
+    .list-grid {
+        grid-template-columns: repeat(5, 1fr);
+        /* xl:grid-cols-5 */
+    }
+}
+
+/* Cards contaniers */
+
+.card-flex {
+    display: flex;
+    position: relative;
+    max-width: 320px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    padding: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition-property: box-shadow;
+    transition-duration: 200ms;
+    transition-timing-function: ease-in-out;
+}
+
+.card-flex:hover {
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+.imageContainer {
+    width: 250px;
+    height: 400px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 0.5rem;
+}
+.card-image{
+    border-radius: 15px;
+    transition: transform 0.2s ease-in-out;
+}
+.card-image:hover{
+    transform: scale(1.05);
+}
+.absloute-position{
+    position:absolute;
+    top: 0.5rem;
+    right: 0.5rem;
 }

@@ -8,8 +8,8 @@ export default function Header() {
         <header className={styles.header}>
             <div className={styles.container}>
                 <nav className={styles.nav}>
-                    <Link href="/" className={styles.navlink}>Home</Link>
-                    <Link href="/favorites" className={styles.navlink}>Favorites</Link>
+                    <Link title='go to home page' href="/" className={styles.navlink}>Home</Link>
+                    <Link title='go to favorite page' href="/favorites" className={styles.navlink}>Favorites</Link>
                 </nav>
             </div>
         </header>

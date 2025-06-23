@@ -1,7 +1,7 @@
 import React from 'react'
 import CastMember from '../../models/CastMebmer';
 import CastMemberCard from '../CastMemberCard/CastMemberCard';
-
+import styles from './CartList.module.css'
 
 export default async function CastList({ params }: Readonly<{ params: { id: string } }>) {
     const movieId = params.id;
@@ -26,13 +26,13 @@ export default async function CastList({ params }: Readonly<{ params: { id: stri
     const cast: CastMember[] = data.cast;
 
     return (
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 mx-auto py-4">
+        <div className={styles.gridContainer}>
             {cast && cast.length > 0 ? (
                 cast.slice(0, 4).map((member: CastMember) => (
                     <CastMemberCard key={member.cast_id} castMember={member} />
                 ))
             ) : (
-                <p className="text-gray-500">No cast available.</p>
+                <p className="empty-list-text-sm">No cast available.</p>
             )}
         </div>
 

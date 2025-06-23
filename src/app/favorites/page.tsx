@@ -3,41 +3,60 @@
 import { favMovie, useUserFavoritesStore } from "@/src/store/userFavoritesStore";
 import dynamic from "next/dynamic";
 import Image from "next/image"
-import React, { useMemo } from 'react'
+import React, { useMemo, useState, useEffect } from 'react'
 
-
-const FavMovieCard = dynamic(() => import('@/src/components/FavoriteMoviesComponents/favMovieCard'), {
+const FavMovieCard = dynamic(() => import('@/src/components/FavoriteMoviesCard/favMovieCard'), {
   ssr: false,
-  loading: () => <div className="flex justify-center items-center w-full h-40">
+  loading: () => (
+    <div className='centered-container'>
       <Image
-        src="/public/spinner.svg"
+        src="/spinner.svg"
         alt="Loading..."
         width={50}
         height={50}
+        priority
       />
-    </div>,
+    </div>
+  ),
 });
 
 export default function Favorites() {
   const movies: favMovie[] = useUserFavoritesStore((state) => state.movies);
+  const [isLoading, setIsLoading] = useState(true);
 
-  //useMemo to avoid unnecessary re-renders "filtering the movies array"
-  //const filteredMovies = useMemo(() => movies.filter(movie => movie.isFavorite), [movies]);
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
+
   const uniqueMovies = useMemo(() =>
     Array.from(new Map(movies.map(movie => [movie.id, movie])).values()),
     [movies]
   );
 
-  if (movies.length === 0) {
+  if (isLoading) {
     return (
-      <div className='flex justify-center items-center h-screen'>
-        <h1 className='text-2xl text-gray-500'>No favorite movies found</h1>
+      <div className='centered-container'>
+        <Image
+          src="/spinner.svg"
+          alt="Loading..."
+          width={50}
+          height={50}
+          priority
+        />
+      </div>
+    );
+  }
+
+  if (uniqueMovies.length === 0) {
+    return (
+      <div className='centered-container'>
+        <h1 className='empty-list-text'>No favorite movies found</h1>
       </div>
     );
   }
 
   return (
-    <div className='bg-grey-500 sm:grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-5 p-4 mx-auto py-4'>
+    <div className='list-grid'>
       {uniqueMovies.map((movie) => (
         <FavMovieCard
           key={movie.id}

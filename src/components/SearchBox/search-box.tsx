@@ -2,7 +2,7 @@
 'use client';
 import React from 'react'
 import {useRouter} from 'next/navigation'
-
+import styles from './SearchBox.module.css'
 export default function SearchBox() {
     const [searchTerm, setSearchTerm]=React.useState("");
     const router = useRouter();
@@ -14,9 +14,22 @@ export default function SearchBox() {
         setSearchTerm("");
     }
     return (
-        <form className='flex justify-between px-5 max-w-6xl mx-auto' onSubmit={handleSumit}>
-            <input type='text' placeholder='Search for a movie...' className='w-full h-14 rounded placeholder-gray-500 outline-none bg-transparent flex-1'
-            value={searchTerm} onChange={(e)=> setSearchTerm(e.target.value)}></input>
-        <button  className='text-amber-300 disabled:text-gray-500' disabled={searchTerm===''}> Search</button></form>
-    )
+        <form className={styles.searchBox} onSubmit={handleSumit}>
+            <input
+                title='Search for movies'
+                type='text'
+                placeholder='Search for a movie...'
+                className={styles.searchInput}
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+            />
+            <button
+                title='Search Button'
+                className={styles.searchButton}
+                disabled={searchTerm === ''}
+            >
+                Search
+            </button>
+        </form>
+    );
 }

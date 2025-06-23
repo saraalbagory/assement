@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { favMovie, useUserFavoritesStore } from "@/src/store/userFavoritesStore";
 import { FaHeart } from "react-icons/fa";
+import styles from "./FavoriteButton.module.css";
 
 type HeartButtonProps = {
     movieId: string;
@@ -20,8 +21,7 @@ export default function HeartButton({ movieId, title, poster_path }: Readonly<He
     () => isClient && movies.some((movie: favMovie) => movie.id === movieId),
     [isClient, movies, movieId]
 );
-    //const isFavorite = isClient && movies.some((movie: favMovie) => movie.id === movieId);
-
+    
     if (!isClient) return null; // avoid hydration mismatch
 
     return (
@@ -37,10 +37,10 @@ export default function HeartButton({ movieId, title, poster_path }: Readonly<He
                     console.log("Favorite movies:", movies);
                 }, 0);
             }}
-            className={`text-2xl transition ${isFavorite ? "text-amber-400" : "text-gray-400"}`}
+            className={`${styles.FavoriteButton} ${isFavorite ? styles.favorite : styles.isnotFavorite}`}
             title={isFavorite ? "Remove from favorites" : "Add to favorites"}
         >
-            <FaHeart />
+            <FaHeart  size="1.5em"/>
         </button>
     );
 }
